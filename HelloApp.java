@@ -2,24 +2,26 @@ public class HelloApp {
 
     public static void main(String[] args) {
 
-        // Case 1: No arguments → print default message
+        // Case 1: No arguments
         if (args.length == 0) {
             System.out.println("Hello, World!");
         } else {
-            // Case 2: Arguments exist → build names using StringBuilder
-            StringBuilder nameBuilder = new StringBuilder();
-            boolean first = true;
 
+            StringBuilder nameBuilder = new StringBuilder();
+
+            // Add all names with ", "
             for (String name : args) {
-                if (!first) {
-                    nameBuilder.append(", ");
-                }
-                nameBuilder.append(name);
-                first = false;
+                nameBuilder.append(name).append(", ");
             }
 
-            // Print final greeting
-            System.out.println("Hello, " + nameBuilder.toString() + "!");
+            // Remove last ", " using substring
+            String result = nameBuilder.toString();
+            if (result.length() > 0) {
+                result = result.substring(0, result.length() - 2);
+            }
+
+            // Print final output
+            System.out.println("Hello, " + result + "!");
         }
     }
 }
