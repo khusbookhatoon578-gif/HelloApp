@@ -1,21 +1,25 @@
 public class HelloApp {
+
     public static void main(String[] args) {
 
+        // Case 1: No arguments → print default message
         if (args.length == 0) {
             System.out.println("Hello, World!");
         } else {
-            StringBuilder names = new StringBuilder();
+            // Case 2: Arguments exist → build names using StringBuilder
+            StringBuilder nameBuilder = new StringBuilder();
+            boolean first = true;
 
-            for (int i = 0; i < args.length; i++) {
-                names.append(args[i]);
-
-                // Add comma except for last name
-                if (i < args.length - 1) {
-                    names.append(", ");
+            for (String name : args) {
+                if (!first) {
+                    nameBuilder.append(", ");
                 }
+                nameBuilder.append(name);
+                first = false;
             }
 
-            System.out.println("Hello, " + names + "!");
+            // Print final greeting
+            System.out.println("Hello, " + nameBuilder.toString() + "!");
         }
     }
 }
